@@ -1,0 +1,7 @@
+order_id,customer,status,amount
+101,Alice,completed,1200
+102,Bob,pending,800
+103,Alice,completed,500
+104,David,failed,300
+105,Bob,completed,700
+106,Alice,pending,400
