@@ -1,17 +1,11 @@
 # frozen_string_literal: true
 
 require 'csv'
+require_relative 'csv_reader'
+require_relative 'order'
 
-class Order
-  attr_reader :id, :customer, :status, :amount
-
-  def initialize(order)
-    @id, @customer, @status, @amount = order
-    @id = @id.to_i
-    @amount = @amount.to_i
-  end
-end
-
+# ReportGenerator class to handle the data, perform operations and
+# return the result
 class ReportGenerator
   attr_reader :result
 
@@ -40,14 +34,6 @@ class ReportGenerator
     value_hash[:completed_orders] += 1 if order_object.status == 'completed'
     value_hash[:pending_orders] += 1 if order_object.status == 'pending'
     value_hash[:total_completed_amount] += order_object.amount if order_object.status == 'completed'
-  end
-end
-
-class CSVReader
-  attr_reader :csv_data
-
-  def initialize(file_path = 'info.csv')
-    @csv_data = CSV.read(file_path)
   end
 end
 
